@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:heal_anality/src/home/cadastro_page.dart';
+import 'package:heal_anality/src/login_page.dart';
 
 import 'src/themes/color_schemes.g.dart';
 import 'src/home/home_page.dart';
@@ -15,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
       theme: ThemeData(
         useMaterial3: true,
@@ -27,8 +30,8 @@ class MyApp extends StatelessWidget {
       routes: {
         //title: 'Heal Analytics'
         //'/': (context) => const Home(),
-        '/': (context) => const HomePage(),
       },
+      home: CadastroPage(),
     );
   }
 }

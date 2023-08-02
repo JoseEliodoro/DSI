@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:heal_anality/src/home/cadastro_page.dart';
+import 'package:heal_anality/src/login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,45 +36,31 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            const Padding(padding: EdgeInsets.only(top: 82)),
-            Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: const Color.fromRGBO(14, 134, 119, 1),
-                  ),
-                  alignment: Alignment.center,
-                  height: 57,
-                  width: 312,
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(
-                      color: Colors.white,
-                      decoration: TextDecoration.none,
-                      fontSize: 35,
-                    ),
-                  ),
-                ),
-                const Padding(padding: EdgeInsets.only(top: 26)),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: const Color.fromRGBO(14, 134, 119, 1),
-                  ),
-                  alignment: Alignment.center,
-                  height: 57,
-                  width: 312,
-                  child: const Text(
-                    'Cadastro',
-                    style: TextStyle(
-                      color: Colors.white,
-                      decoration: TextDecoration.none,
-                      fontSize: 35,
-                    ),
-                  ),
-                ),
-              ],
+            SizedBox(height: 48,),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => LoginPage(),)
+              );
+            }, 
+            child: Text('Login'),
+            style: ElevatedButton.styleFrom(
+              textStyle: TextStyle(fontSize: 35, color: Colors.white),
+              fixedSize: Size(300, 70),
+              backgroundColor: Color.fromRGBO(0, 0, 0, 0.3),
+              ),
+            ),
+            SizedBox(height: 16,),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => CadastroPage(),)
+              );
+            }, 
+            child: Text('Cadastrar'),
+            style: ElevatedButton.styleFrom(
+              textStyle: TextStyle(fontSize: 35, color: Colors.white),
+              fixedSize: Size(300, 70),
+              backgroundColor: Color.fromRGBO(0, 0, 0, 0.3),
+              ),
             ),
           ]),
         ),
