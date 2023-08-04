@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         //title: 'Heal Analytics'
         //'/': (context) => const Home(),
       },
-      home: CadastroPage(),
+      home: HomePage(),
     );
   }
 }
