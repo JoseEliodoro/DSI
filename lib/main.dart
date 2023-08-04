@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:heal_anality/src/home/cadastro_page.dart';
-import 'package:heal_anality/src/login_page.dart';
 
 import 'src/themes/color_schemes.g.dart';
 import 'src/home/home_page.dart';
