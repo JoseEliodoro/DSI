@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
         './cadastro': (context) => const CadastroPage(),
         './login': (context) => const LoginPage(),
       },
-      home: HomePage(),
     );
   }
 }
