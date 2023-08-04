@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:heal_anality/src/home/cadastro_page.dart';
-import 'package:heal_anality/src/login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
