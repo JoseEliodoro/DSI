@@ -5,6 +5,7 @@ import 'src/themes/color_schemes.g.dart';
 import 'home/home_page.dart';
 import 'cadastro/cadastro_page.dart';
 import 'login/login.dart';
+import 'access/access_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,11 +27,12 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color.fromRGBO(10, 175, 158, 1),
       ),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
-      routes: {
+      /* routes: {
         '/': (context) => const HomePage(),
         './cadastro': (context) => const CadastroPage(),
         './login': (context) => const LoginPage(),
-      },
+      }, */
+      home: const AccessPage(),
     );
   }
 }
