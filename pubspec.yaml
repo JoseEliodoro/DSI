@@ -41,6 +41,11 @@ dependencies:
   realm: ^1.2.0
   webview_flutter: ^4.2.2
 
+  # Firebase
+  provider: ^6.0.5
+  firebase_auth: ^4.7.2
+  firebase_core: ^2.15.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

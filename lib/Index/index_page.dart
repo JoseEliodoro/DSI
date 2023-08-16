@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class indexPage extends StatefulWidget {
+  const indexPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<indexPage> createState() => _indexPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _indexPageState extends State<indexPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
             Column(
               children: [
                 GestureDetector(
-                  onTap: () => Navigator.of(context).pushNamed('./login'),
+                  onTap: () => Navigator.of(context).pushNamed('./auth'),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const Padding(padding: EdgeInsets.only(top: 26)),
                 GestureDetector(
-                  onTap: () => Navigator.of(context).pushNamed('./cadastro'),
+                  onTap: () => Navigator.of(context).pushNamed('./auth'),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),
