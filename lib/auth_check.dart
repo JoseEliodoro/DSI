@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:heal_anality/access/access_page.dart';
+import 'package:heal_anality/home/access_page.dart';
 import 'package:provider/provider.dart';
 
 import 'services/auth_service.dart';
@@ -22,7 +22,7 @@ class _AuthCheckState extends State<AuthCheck> {
     } else if (auth.usuario == null) {
       return const LoginPage();
     } else {
-      return const AccessPage();
+      return const HomePage();
     }
   }
 

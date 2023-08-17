@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:heal_anality/home/custom_drawer.dart';
+import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../services/auth_service.dart';
 
-class AccessPage extends StatefulWidget {
-  const AccessPage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<AccessPage> createState() => _AccessPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _AccessPageState extends State<AccessPage> {
+class _HomePageState extends State<HomePage> {
   WebViewController controller = WebViewController()
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
     ..setNavigationDelegate(NavigationDelegate(
@@ -21,8 +24,13 @@ class _AccessPageState extends State<AccessPage> {
 
   @override
   Widget build(BuildContext context) {
+    AuthService auth = Provider.of<AuthService>(context);
+    //print(auth.);
     return Scaffold(
-      appBar: AppBar(title: Text('data')),
+      drawer: CustomDrawer(),
+      appBar: AppBar(
+        title: const Text('Predict Values'),
+      ),
       body: WebViewWidget(
         controller: controller,
       ),

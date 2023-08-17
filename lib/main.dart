@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heal_anality/home/access_page.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -42,6 +43,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => const indexPage(),
         './auth': (context) => const AuthCheck(),
+        './home': (context) => const HomePage(),
       },
     );
   }
