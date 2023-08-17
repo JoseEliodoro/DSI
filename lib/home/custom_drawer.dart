@@ -7,10 +7,20 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ModalRoute<dynamic>? currentRoute = ModalRoute.of(context);
+    String currentRouteName = currentRoute?.settings.name ?? "Unknown Route";
     return NavigationDrawer(
       onDestinationSelected: (index) {
-        if (index == 1) {
-          print('Home');
+        if (index == 0) {
+          if (currentRouteName != './home' &&
+              currentRouteName != './auth') {
+            Navigator.of(context).pushNamed('./home');
+          }
+        } else if (index == 1) {
+          if (currentRouteName != './historic' &&
+              currentRouteName != './auth') {
+            Navigator.of(context).pushNamed('./historic');
+          }
         } else if (index == 2) {
           context.read<AuthService>().logout();
         }

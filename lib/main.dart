@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:heal_anality/home/access_page.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'Index/index_page.dart';
+import 'auth_check.dart';
+import 'historico/historic_page.dart';
+import 'home/access_page.dart';
 import 'src/themes/color_schemes.g.dart';
 
 import 'firebase_options.dart';
-import 'auth_check.dart';
-import 'Index/index_page.dart';
 import 'services/auth_service.dart';
 
 void main() async {
@@ -41,9 +42,10 @@ class _MyAppState extends State<MyApp> {
       ),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       routes: {
-        '/': (context) => const indexPage(),
-        './auth': (context) => const AuthCheck(),
-        './home': (context) => const HomePage(),
+        //'/': (context) => const IndexPage(),
+        //'./auth': (context) => const AuthCheck(),
+        //'./home': (context) => const HomePage(),
+        '/': (context) => const HistoricPage(),
       },
     );
   }
