@@ -12,13 +12,12 @@ class CustomDrawer extends StatelessWidget {
     return NavigationDrawer(
       onDestinationSelected: (index) {
         if (index == 0) {
-          if (currentRouteName != './home' &&
-              currentRouteName != './auth') {
+          if (currentRouteName != './home' || currentRouteName == './auth') {
             Navigator.of(context).pushNamed('./home');
           }
         } else if (index == 1) {
-          if (currentRouteName != './historic' &&
-              currentRouteName != './auth') {
+          if (currentRouteName != './historic' ||
+              currentRouteName == './auth') {
             Navigator.of(context).pushNamed('./historic');
           }
         } else if (index == 2) {

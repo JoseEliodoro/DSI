@@ -25,8 +25,8 @@ class ButtonsMenu extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                if (currentRouteName != './home' &&
-                    currentRouteName != './auth') {
+                if (currentRouteName != './home' ||
+                    currentRouteName == './auth') {
                   Navigator.of(context).pushNamed('./home');
                 }
               },
@@ -56,8 +56,8 @@ class ButtonsMenu extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                if (currentRouteName != './historic' &&
-                    currentRouteName != './auth') {
+                if (currentRouteName != './historic' ||
+                    currentRouteName == './auth') {
                   Navigator.of(context).pushNamed('./historic');
                 }
               },

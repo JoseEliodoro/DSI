@@ -42,10 +42,10 @@ class _MyAppState extends State<MyApp> {
       ),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       routes: {
-        //'/': (context) => const IndexPage(),
-        //'./auth': (context) => const AuthCheck(),
-        //'./home': (context) => const HomePage(),
-        '/': (context) => const HistoricPage(),
+        '/': (context) => const IndexPage(),
+        './auth': (context) => const AuthCheck(),
+        './home': (context) => const HomePage(),
+        './historic': (context) => const HistoricPage(),
       },
     );
   }
