@@ -46,6 +46,7 @@ class _MyAppState extends State<MyApp> {
         './auth': (context) => const AuthCheck(),
         './home': (context) => const HomePage(),
         './historic': (context) => const HistoricPage(),
+
       },
     );
   }

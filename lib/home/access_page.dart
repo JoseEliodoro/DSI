@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:heal_anality/home/custom_drawer.dart';
+import 'package:heal_anality/widgets/buttons_menu.dart';
+import 'package:heal_anality/widgets/custom_appbar.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -15,14 +18,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  WebViewController controller = WebViewController()
+  /* WebViewController controller = WebViewController()
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
     ..setNavigationDelegate(NavigationDelegate(
       onPageStarted: (String url) {
         print('começou');
       },
     ))
-    ..loadRequest(Uri.parse('https://unname.streamlit.app/'));
+    ..loadRequest(Uri.parse('https://unname.streamlit.app/?user=1')); */
+  late AuthService auth;
+
+  @override
+  void initState() {
+    super.initState();
+    auth = Provider.of<AuthService>(context, listen: false);
+  }
 
   @override
   Widget build(BuildContext context) {
