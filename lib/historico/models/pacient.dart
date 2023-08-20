@@ -1,4 +1,4 @@
-class Pacient {
+class Predict {
   String area;
   String condado;
   String nomeHospital;
@@ -21,7 +21,7 @@ class Pacient {
   int emergency;
   String cost;
 
-  Pacient({
+  Predict({
     required this.area,
     required this.condado,
     required this.nomeHospital,
@@ -44,6 +44,31 @@ class Pacient {
     required this.emergency,
     required this.cost,
   });
+
+  factory Predict.fromJson(Map<String, dynamic> json) => Predict(
+        aprDrgCode: json["APR DRG Code"],
+        aprMdcCode: json["APR MDC Code"],
+        medicalDescription: json["APR Medical Surgical Description"],
+        riskMortality: json["APR Risk of Mortality"],
+        severity: json["APR Severity of Illness Code"],
+        aborttion: json["Abortion Edit Indicator"],
+        ageGroup: json["Age Group"],
+        attending: json["Attending Provider License Number"],
+        emergency: json["Emergency Department Indicator"],
+        ethnicity: json["Ethnicity"],
+        nomeHospital: json["Facility Name"],
+        gender: json["Gender"],
+        area: json["Health Service Area"],
+        condado: json["Hospital County"],
+        stay: json["Length of Stay"],
+        operating: json["Operating Provider License Number"],
+        disposition: json["Patient Disposition"],
+        race: json["Race"],
+        patyment: json["Source of Payment 1"],
+        admission: json["Type of Admission"],
+        cost: json['Total Cost Category'],
+      );
+
   Map getValues() {
     String age = '';
     String severityIllness = '';
