@@ -1,154 +1,28 @@
+/* import 'dart:convert';
+import 'dart:typed_data';
 
 import 'pacient.dart';
 
-List<Map> pacients = [{
-"Health Service Area":"Central NY",
-"Hospital County":"Cortland",
-"Facility Name":"Cortland Regional Medical Center Inc",
-"Age Group":0,
-"Gender":"U",
-"Race":"White",
-"Ethnicity":"Not Span/Hispanic",
-"Length of Stay":26,
-"Type of Admission":"Elective",
-"Patient Disposition":"Left Against Medical Advice",
-"APR DRG Code":912,
-"APR MDC Code":25,
-"APR Severity of Illness Code":1,
-"APR Risk of Mortality":"Minor",
-"APR Medical Surgical Description":"Medical",
-"Source of Payment 1":"Self-Pay",
-"Attending Provider License Number":0,
-"Operating Provider License Number":0,
-"Abortion Edit Indicator":0,
-"Emergency Department Indicator":0,
-"Total Cost Category":"10k a 30k",
-}, {
-  "Health Service Area": "Capital/Adiron",
-  "Hospital County": "Essex",
-  "Facility Name": "Moses-Ludington Hospital",
-  "Age Group": 4,
-  "Gender": "U",
-  "Race": "White",
-  "Ethnicity": "Spanish/Hispanic",
-  "Length of Stay": 39,
-  "Type of Admission": "Urgent",
-  "Patient Disposition": "Expired",
-  "APR DRG Code": 912,
-  "APR MDC Code": 21,
-  "APR Severity of Illness Code": 1,
-  "APR Risk of Mortality": "Minor",
-  "APR Medical Surgical Description": "Medical",
-  "Source of Payment 1": "Self-Pay",
-  "Attending Provider License Number": 1001.2,
-  "Operating Provider License Number": 0,
-  "Abortion Edit Indicator": 1,
-  "Emergency Department Indicator": 0,
-  "Total Cost Category": "30k a 50k"
-}, {
-  "Health Service Area": "Southern Tier",
-  "Hospital County": "Chenango",
-  "Facility Name": "Chenango Memorial Hospital Inc",
-  "Age Group": 2,
-  "Gender": "U",
-  "Race": "Black/African American",
-  "Ethnicity": "Spanish/Hispanic",
-  "Length of Stay": 7,
-  "Type of Admission": "Urgent",
-  "Patient Disposition": "Federal Health Care Facility",
-  "APR DRG Code": 912,
-  "APR MDC Code": 21,
-  "APR Severity of Illness Code": 4,
-  "APR Risk of Mortality": "Major",
-  "APR Medical Surgical Description": "Surgical",
-  "Source of Payment 1": "Blue Cross",
-  "Attending Provider License Number": 1001.2,
-  "Operating Provider License Number": 0,
-  "Abortion Edit Indicator": 0,
-  "Emergency Department Indicator": 1,
-  "Total Cost Category": "5k a 10k"
-}];
+import 'package:http/http.dart' as http;
 
-class MoedaRepository {
-  static List<Pacient> tabela = [
-    Pacient(
-      area: pacients[0]["Health Service Area"], 
-      condado: pacients[0]['Hospital County'], 
-      nomeHospital: pacients[0]["Facility Name"], 
-      ageGroup: pacients[0]["Age Group"], 
-      gender: pacients[0]["Gender"], 
-      race: pacients[0]["Race"], 
-      ethnicity: pacients[0]["Ethnicity"], 
-      stay: pacients[0]["Length of Stay"], 
-      admission: pacients[0]["Type of Admission"], 
-      disposition: pacients[0]["Patient Disposition"], 
-      aprDrgCode: pacients[0]["APR DRG Code"], 
-      aprMdcCode: pacients[0]["APR MDC Code"], 
-      severity: pacients[0]["APR Severity of Illness Code"], 
-      riskMortality: pacients[0]["APR Risk of Mortality"], 
-      medicalDescription: pacients[0]["APR Medical Surgical Description"], 
-      patyment: pacients[0]["Source of Payment 1"], 
-      attending: double.parse('${pacients[0]["Attending Provider License Number"]}'), 
-      operating: double.parse("${pacients[0]["Operating Provider License Number"]}"), 
-      aborttion: pacients[0]["Abortion Edit Indicator"], 
-      emergency: pacients[0]["Emergency Department Indicator"], 
-      cost: pacients[0]["Total Cost Category"],
-    ),
-    Pacient(
-      area: pacients[1]["Health Service Area"], 
-      condado: pacients[1]['Hospital County'], 
-      nomeHospital: pacients[1]["Facility Name"], 
-      ageGroup: pacients[1]["Age Group"], 
-      gender: pacients[1]["Gender"], 
-      race: pacients[1]["Race"], 
-      ethnicity: pacients[1]["Ethnicity"], 
-      stay: pacients[1]["Length of Stay"], 
-      admission: pacients[1]["Type of Admission"], 
-      disposition: pacients[1]["Patient Disposition"], 
-      aprDrgCode: pacients[1]["APR DRG Code"], 
-      aprMdcCode: pacients[1]["APR MDC Code"], 
-      severity: pacients[1]["APR Severity of Illness Code"], 
-      riskMortality: pacients[1]["APR Risk of Mortality"], 
-      medicalDescription: pacients[1]["APR Medical Surgical Description"], 
-      patyment: pacients[1]["Source of Payment 1"], 
-      attending: double.parse('${pacients[0]["Attending Provider License Number"]}'), 
-      operating: double.parse("${pacients[0]["Operating Provider License Number"]}"), 
-      aborttion: pacients[1]["Abortion Edit Indicator"], 
-      emergency: pacients[1]["Emergency Department Indicator"], 
-      cost: pacients[1]["Total Cost Category"],
-    ),
-    Pacient(
-      area: pacients[2]["Health Service Area"], 
-      condado: pacients[2]['Hospital County'], 
-      nomeHospital: pacients[2]["Facility Name"], 
-      ageGroup: pacients[2]["Age Group"], 
-      gender: pacients[2]["Gender"], 
-      race: pacients[2]["Race"], 
-      ethnicity: pacients[2]["Ethnicity"], 
-      stay: pacients[2]["Length of Stay"], 
-      admission: pacients[2]["Type of Admission"], 
-      disposition: pacients[2]["Patient Disposition"], 
-      aprDrgCode: pacients[2]["APR DRG Code"], 
-      aprMdcCode: pacients[2]["APR MDC Code"], 
-      severity: pacients[2]["APR Severity of Illness Code"], 
-      riskMortality: pacients[2]["APR Risk of Mortality"], 
-      medicalDescription: pacients[2]["APR Medical Surgical Description"], 
-      patyment: pacients[2]["Source of Payment 1"], 
-      attending: double.parse('${pacients[0]["Attending Provider License Number"]}'), 
-      operating: double.parse("${pacients[0]["Operating Provider License Number"]}"), 
-      aborttion: pacients[2]["Abortion Edit Indicator"], 
-      emergency: pacients[2]["Emergency Department Indicator"], 
-      cost: pacients[2]["Total Cost Category"],
-    ),
-  ];
+class Predicts {
+  late String id;
+  late List<Predict> tabela = [];
+  late List previsoes;
+  bool isLoading = true;
 
+  Predicts({required id}) {
+    fetch(id);
+  }
+
+  Future fetch(var id) async {
+    String url =
+        'https://dsi-mobile-unname-default-rtdb.firebaseio.com/Users/$id/.json';
+    var response = await http.get(Uri.parse(url));
+    previsoes = await json.decode(response.body)['predicts'].values.toList();
+    for (int x = 0; x < previsoes.length; x++) {
+      tabela.add(Predict.fromJson(previsoes[x]));
+    }
+  }
 }
-
-
-
-
-
-
-
-
-
+ */

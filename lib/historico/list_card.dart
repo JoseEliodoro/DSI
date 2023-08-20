@@ -3,7 +3,7 @@ import 'package:heal_anality/historico/popup_info.dart';
 import 'models/pacient.dart';
 
 class ListCard extends StatelessWidget {
-  final List<Pacient> tabela;
+  final List<Predict> tabela;
   final int i;
   const ListCard({super.key, required this.tabela, required this.i});
 
