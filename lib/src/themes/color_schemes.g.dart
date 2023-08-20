@@ -8,7 +8,7 @@ const lightColorScheme = ColorScheme(
   onPrimaryContainer: Color(0xFF21005D),
   secondary: Color(0xFF625B71),
   onSecondary: Color(0xFFFFFFFF),
-  secondaryContainer: Color(0xFFE8DEF8),
+  secondaryContainer: Color.fromRGBO(10, 175, 158, .35),//Botão
   onSecondaryContainer: Color(0xFF1D192B),
   tertiary: Color(0xFF7D5260),
   onTertiary: Color(0xFFFFFFFF),
@@ -19,9 +19,9 @@ const lightColorScheme = ColorScheme(
   errorContainer: Color(0xFFF9DEDC),
   onErrorContainer: Color(0xFF410E0B),
   outline: Color(0xFF79747E),
-  background: Color(0xFFFFFBFE),
+  background:Color.fromRGBO(230, 248, 246, 1), // popup
   onBackground: Color(0xFF1C1B1F),
-  surface: Color(0xFFFFFBFE),
+  surface: Color.fromRGBO(230, 248, 246, 1),//drawer
   onSurface: Color(0xFF1C1B1F),
   surfaceVariant: Color(0xFFE7E0EC),
   onSurfaceVariant: Color(0xFF49454F),

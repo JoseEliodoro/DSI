@@ -9,7 +9,18 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     ModalRoute<dynamic>? currentRoute = ModalRoute.of(context);
     String currentRouteName = currentRoute?.settings.name ?? "Unknown Route";
+    int getIndex({bool i = false}) {
+      
+      if (currentRouteName == './home' || currentRouteName == './auth') {
+        return 0;
+      } else if (currentRouteName == './historic') {
+        return 1;
+      }
+      return 2;
+    }
+
     return NavigationDrawer(
+      selectedIndex: getIndex(),
       onDestinationSelected: (index) {
         if (index == 0) {
           if (currentRouteName != './home' || currentRouteName == './auth') {
@@ -22,6 +33,7 @@ class CustomDrawer extends StatelessWidget {
           }
         } else if (index == 2) {
           context.read<AuthService>().logout();
+          Navigator.of(context).pushNamed('./auth');
         }
       },
       children: [
@@ -33,6 +45,7 @@ class CustomDrawer extends StatelessWidget {
           ),
         ),
         const NavigationDrawerDestination(
+          backgroundColor: Colors.amber,
           icon: Icon(Icons.home),
           label: SizedBox(
             width: 210,
@@ -40,6 +53,7 @@ class CustomDrawer extends StatelessWidget {
           ),
         ),
         const NavigationDrawerDestination(
+          backgroundColor: Colors.amber,
           icon: Icon(Icons.history),
           label: SizedBox(
             width: 210,
