@@ -6,11 +6,12 @@ import '../services/auth_service.dart';
 import '../widgets/buttons_menu.dart';
 import '../widgets/custom_appbar.dart';
 import 'list_card.dart';
-import 'models/pacient.dart';
 
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+
+import 'models/predict.dart';
 
 class HistoricPage extends StatefulWidget {
   const HistoricPage({super.key});
@@ -22,7 +23,7 @@ class HistoricPage extends StatefulWidget {
 class _HistoricPageState extends State<HistoricPage> {
   late Future futuret;
 
-  Future getFilmes(var id) async {
+  Future getPredicts(var id) async {
     late List<Predict> tabela = [];
     late List previsoes;
     final response = await http.get(Uri.parse(
@@ -40,7 +41,7 @@ class _HistoricPageState extends State<HistoricPage> {
     AuthService auth = Provider.of<AuthService>(context);
 
     void initState() {
-      futuret = getFilmes(auth.usuario?.uid);
+      futuret = getPredicts(auth.usuario?.uid);
     }
 
     initState();

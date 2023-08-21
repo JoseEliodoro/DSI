@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:heal_anality/historico/popup_info.dart';
-import 'models/pacient.dart';
+import 'models/predict.dart';
 
 class ListCard extends StatelessWidget {
   final List<Predict> tabela;

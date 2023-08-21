@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'models/pacient.dart';
+import 'models/predict.dart';
 
 class PopUpInfo extends StatelessWidget {
   final List<Predict> tabela;
@@ -330,7 +330,7 @@ class PopUpInfo extends StatelessWidget {
               child: Row(
                 children: [
                   const Text(
-                    'Licensa do provedor de atendimento: ',
+                    'Licensa do atendimento: ',
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -351,7 +351,7 @@ class PopUpInfo extends StatelessWidget {
               child: Row(
                 children: [
                   const Text(
-                    'Licensa do Provedor Operacional: ',
+                    'Licensa do operacional: ',
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -417,8 +417,7 @@ class PopUpInfo extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: Text(
-                tabela[i].cost,
+              child: Text("R\$${tabela[i].cost}",
                 style: const TextStyle(
                   color: Color.fromRGBO(10, 175, 158, 1),
                   fontSize: 30,
