@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:heal_anality/crudpacient/read_pacient_page.dart';
+import 'package:heal_anality/crudpacient/updata_pacient_page.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'Index/index_page.dart';
 import 'auth_check.dart';
+import 'crudpacient/add_pacient_page.dart';
 import 'historico/historic_page.dart';
 import 'home/access_page.dart';
 import 'src/themes/color_schemes.g.dart';
@@ -34,6 +37,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.light,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: lightColorScheme,
@@ -46,7 +50,9 @@ class _MyAppState extends State<MyApp> {
         './auth': (context) => const AuthCheck(),
         './home': (context) => const HomePage(),
         './historic': (context) => const HistoricPage(),
-
+        './add_pacient': (context) => const AddPacientPage(),
+        './read_pacient': (context) => const ReadPacientsPage(),
+        //'./put_pacient': (context) => const UpdataPacientPage(),
       },
     );
   }
