@@ -47,10 +47,10 @@ class _HistoricPageState extends State<HistoricPage> {
     initState();
     return Scaffold(
       drawer: const CustomDrawer(),
-      appBar: customappbar(),
+      appBar: customappbar('Historic Predicts'),
       body: Column(
         children: [
-          const ButtonsMenu(),
+          //const ButtonsMenu(),
           FutureBuilder(
             future: futuret,
             builder: (context, snapshot) {

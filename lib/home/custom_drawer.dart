@@ -15,8 +15,12 @@ class CustomDrawer extends StatelessWidget {
         return 0;
       } else if (currentRouteName == './historic') {
         return 1;
+      } else if (currentRouteName == './add_pacient' || currentRouteName == './put_pacient') {
+        return 2;
+      }else if (currentRouteName == './read_pacient') {
+        return 3;
       }
-      return 2;
+      return 4;
     }
 
     return NavigationDrawer(
@@ -32,6 +36,14 @@ class CustomDrawer extends StatelessWidget {
             Navigator.of(context).pushNamed('./historic');
           }
         } else if (index == 2) {
+          if (currentRouteName != './add_pacient') {
+            Navigator.of(context).pushNamed('./add_pacient');
+          }
+        } else if (index == 3) {
+          if (currentRouteName != './read_pacient') {
+            Navigator.of(context).pushNamed('./read_pacient');
+          }
+        } else if (index == 4) {
           context.read<AuthService>().logout();
           Navigator.of(context).pushNamed('./auth');
         }
@@ -40,24 +52,36 @@ class CustomDrawer extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 28, 16, 16),
           child: Text(
-            'Opções',
+            'Options',
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
         const NavigationDrawerDestination(
-          backgroundColor: Colors.amber,
           icon: Icon(Icons.home),
           label: SizedBox(
             width: 210,
-            child: Text('Home'),
+            child: Text('Predict'),
           ),
         ),
         const NavigationDrawerDestination(
-          backgroundColor: Colors.amber,
           icon: Icon(Icons.history),
           label: SizedBox(
             width: 210,
-            child: Text('Histoty'),
+            child: Text('Historic Predicts'),
+          ),
+        ),
+        const NavigationDrawerDestination(
+          icon: Icon(Icons.person_add_alt_sharp),
+          label: SizedBox(
+            width: 210,
+            child: Text('Add Pacient'),
+          ),
+        ),
+        const NavigationDrawerDestination(
+          icon: Icon(Icons.person_search_sharp),
+          label: SizedBox(
+            width: 210,
+            child: Text('Read Pacient'),
           ),
         ),
         const NavigationDrawerDestination(

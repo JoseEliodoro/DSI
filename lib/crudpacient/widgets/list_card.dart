@@ -159,7 +159,8 @@ class ListCard extends StatefulWidget {
   final List<Pacient> tabela;
   final int i;
   final Function(String) del;
-  const ListCard({super.key, required this.tabela, required this.i, required this.del});
+  const ListCard(
+      {super.key, required this.tabela, required this.i, required this.del});
 
   @override
   State<ListCard> createState() => _ListCardState();
@@ -170,7 +171,7 @@ class _ListCardState extends State<ListCard> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     AuthService auth = Provider.of<AuthService>(context);
-
+    
     return TextButton(
       onPressed: () => showDialog<String>(
         context: context,
@@ -216,6 +217,8 @@ class _ListCardState extends State<ListCard> {
             TextButton.icon(
               onPressed: () {
                 //Navigator.pop(context, 'OK');
+                auth.pacient = widget.tabela[widget.i];
+                Navigator.of(context).pushNamed('./put_pacient');
               },
               label: const Text(
                 'Editar',

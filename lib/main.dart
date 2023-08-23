@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         './historic': (context) => const HistoricPage(),
         './add_pacient': (context) => const AddPacientPage(),
         './read_pacient': (context) => const ReadPacientsPage(),
-        //'./put_pacient': (context) => const UpdataPacientPage(),
+        './put_pacient': (context) => const UpdataPacientPage(),
       },
     );
   }

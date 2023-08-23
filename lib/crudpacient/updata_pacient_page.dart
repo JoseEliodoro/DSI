@@ -13,14 +13,14 @@ import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 import 'package:http/http.dart' as http;
 
-class AddPacientPage extends StatefulWidget {
-  const AddPacientPage({super.key});
+class UpdataPacientPage extends StatefulWidget {
+  const UpdataPacientPage({super.key});
 
   @override
-  State<AddPacientPage> createState() => _AddPacientPageState();
+  State<UpdataPacientPage> createState() => _UpdataPacientPageState();
 }
 
-class _AddPacientPageState extends State<AddPacientPage> {
+class _UpdataPacientPageState extends State<UpdataPacientPage> {
   late Future futuret;
   final formKey = GlobalKey<FormState>();
   final name = TextEditingController();
@@ -34,16 +34,17 @@ class _AddPacientPageState extends State<AddPacientPage> {
   List surgeries = [];
   List drugs = [];
   bool isChecked = false;
+  bool isLoading = true;
   @override
   void initState() {
     gender.text = 'Masculino';
     super.initState();
   }
 
-  POST(String user, Map paciente) async {
+  PUT(String user, String id, Map paciente) async {
     String link =
-        'https://dsi-mobile-unname-default-rtdb.firebaseio.com/Users/$user/pacients/.json';
-    await http.post(
+        'https://dsi-mobile-unname-default-rtdb.firebaseio.com/Users/$user/pacients/$id/.json';
+    await http.put(
       Uri.parse(link),
       body: json.encode(paciente),
     );
@@ -117,7 +118,7 @@ class _AddPacientPageState extends State<AddPacientPage> {
       "Psicotrópicos",
       "Outros",
     ];
-    bool isPost = false;
+
     var maskFormatter = MaskTextInputFormatter(
       mask: '(##) 9####-####',
       filter: {
@@ -130,34 +131,45 @@ class _AddPacientPageState extends State<AddPacientPage> {
         "#": RegExp(r'[0-9]'),
       },
     );
-
-    post(pacient) async {
-      setState(() {
-        isPost = true;
-      });
-      await POST('${auth.usuario?.uid}', pacient);
-      setState(() {
-        isPost = false;
-        name.text = '';
-        birthDay.text = '';
-        gender.text = '';
-        phone.text = '';
-        cpf.text = '';
-
-        chronicCondition = [];
-        allergy = [];
-        surgeries = [];
-        drugs = [];
-        isChecked = false;
-      });
+    put(pacient) async {
+      await PUT('${auth.usuario?.uid}', "${auth.pacient?.id}", pacient);
+      Navigator.of(context).pushNamed('./read_pacient');
     }
 
+    if (auth.pacient == null) {
+      return Scaffold(
+        drawer: const CustomDrawer(),
+        appBar: customappbar('Update Pacient'),
+        body: const Center(
+          child: CircularProgressIndicator(
+            color: Colors.white,
+          ),
+        ),
+      );
+    }
+
+    initState() {
+      if (isLoading) {
+        name.text = '${auth.pacient?.name}';
+        phone.text = '${auth.pacient?.phone}';
+        birthDay.text = '${auth.pacient?.birthDay}';
+        cpf.text = '${auth.pacient?.cpf}';
+
+        chronicCondition = auth.pacient?.getValues()['Medical Conditions'];
+        allergy = auth.pacient?.getValues()['Allergies'];
+        drugs = auth.pacient?.getValues()['Drugs'];
+        surgeries = auth.pacient?.getValues()['Surgeries'];
+        isChecked = auth.pacient?.getValues()['Health Insurance'];
+        isLoading = !isLoading;
+      }
+    }
+
+    initState();
     return Scaffold(
       drawer: const CustomDrawer(),
-      appBar: customappbar('Add Pacient'),
+      appBar: customappbar('Update Pacient'),
       body: Column(
         children: [
-          //const ButtonsMenu(),
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
@@ -169,7 +181,6 @@ class _AddPacientPageState extends State<AddPacientPage> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      // Nome
                       Padding(
                         padding: const EdgeInsets.only(
                           top: 4,
@@ -189,8 +200,9 @@ class _AddPacientPageState extends State<AddPacientPage> {
                           },
                         ),
                       ),
-                      // Data de nascimento e gênero
+                      // Data de Nascimento
                       Padding(
+                        // Data de nascimento
                         padding: const EdgeInsets.only(
                           top: 4,
                           left: 16,
@@ -222,16 +234,15 @@ class _AddPacientPageState extends State<AddPacientPage> {
                                 ),
                                 readOnly: true,
                                 onTap: () async {
-                                  List birth = birthDay.text.split('-');
+                                  List birth =
+                                      '${auth.pacient?.birthDay}'.split('-');
                                   DateTime? pickedDate = await showDatePicker(
                                     context: context,
-                                    initialDate: birthDay.text == ''
-                                        ? DateTime.now()
-                                        : DateTime(
-                                            int.parse(birth[2]),
-                                            int.parse(birth[1]),
-                                            int.parse(birth[0]),
-                                          ),
+                                    initialDate: DateTime(
+                                      int.parse(birth[2]),
+                                      int.parse(birth[1]),
+                                      int.parse(birth[0]),
+                                    ),
                                     firstDate: DateTime(1950),
                                     lastDate: DateTime.now(),
                                   );
@@ -253,7 +264,7 @@ class _AddPacientPageState extends State<AddPacientPage> {
                               ),
                               child: DropdownMenu<String>(
                                 width: MediaQuery.of(context).size.width * .35,
-                                initialSelection: listGender.first,
+                                initialSelection: auth.pacient?.gender,
                                 onSelected: (String? value) {
                                   setState(() {
                                     gender.text = value!;
@@ -449,21 +460,17 @@ class _AddPacientPageState extends State<AddPacientPage> {
                                 "CPF": cpf.text,
                                 'Health Insurance': isChecked,
                               };
-                              post(pacient);
+                              put(pacient);
                             }
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.all(16),
-                            child: isPost
-                                ? const CircularProgressIndicator(
-                                    color: Colors.white,
-                                  )
-                                : const Text(
-                                    'SALVA PACIENTE',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Text(
+                              'EDITE PACIENTE',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
                         ),
                       ),

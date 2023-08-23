@@ -12,7 +12,7 @@ class Select extends StatelessWidget {
         Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20)),
-            color: Color.fromRGBO(44, 204, 188, 0.35),
+            color: Color.fromRGBO(10, 175, 158, 1),
           ),
           child: Padding(
             padding: const EdgeInsets.only(
@@ -31,7 +31,7 @@ class Select extends StatelessWidget {
                 Text(
                   "${el[x]}",
                   style: const TextStyle(
-                    color: Color.fromRGBO(44, 204, 188, 0.973),
+                    color: Colors.white,
                   ),
                 ),
               ],

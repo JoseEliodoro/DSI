@@ -40,10 +40,10 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       drawer: const CustomDrawer(),
-      appBar: customappbar(),
+      appBar: customappbar('Predicts'),
       body: Column(
         children: [
-          const ButtonsMenu(),
+          //const ButtonsMenu(),
           Expanded(
             child: Text('form'),/* WebViewWidget(
               controller: WebViewController()

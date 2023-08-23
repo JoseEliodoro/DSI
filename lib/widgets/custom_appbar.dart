@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-AppBar customappbar() {
+AppBar customappbar(String title) {
   return AppBar(
     toolbarHeight: 100,
     backgroundColor: const Color.fromRGBO(10, 175, 158, 1),
@@ -19,12 +19,10 @@ AppBar customappbar() {
       },
     ),
     title: Row(
-      children: const [
-        SizedBox(
-          width: 150,
-        ),
+      mainAxisAlignment: MainAxisAlignment.end,
+      children:  [
         Text(
-          'Heal Analytics',
+          title,
           style: TextStyle(
             color: Colors.white,
           ),

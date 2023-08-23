@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../crudpacient/models/pacient.dart';
+
 class AuthExeption implements Exception {
   String message;
   AuthExeption(this.message);
@@ -9,6 +11,7 @@ class AuthExeption implements Exception {
 class AuthService extends ChangeNotifier {
   FirebaseAuth _auth = FirebaseAuth.instance;
   User? usuario;
+  Pacient? pacient;
   bool islogin = true;
   bool isLoading = true;
 
