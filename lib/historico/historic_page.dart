@@ -43,6 +43,7 @@ class _HistoricPageState extends State<HistoricPage> {
     void initState() {
       futuret = getPredicts(auth.usuario?.uid);
     }
+    
 
     initState();
     return Scaffold(
@@ -72,7 +73,21 @@ class _HistoricPageState extends State<HistoricPage> {
                           children: [
                             ListView.separated(
                               itemBuilder: (BuildContext context, int pacient) {
-                                return ListCard(tabela: tabela, i: pacient);
+                                return Dismissible(
+                                  key: UniqueKey(),
+                                  direction: DismissDirection.startToEnd,
+                                  background: Container(
+                                    color: Colors.red,
+                                    alignment: Alignment.centerRight,
+                                    child: Icon(Icons.delete, color: Colors.white),
+                                  ),
+                                  // onDismissed: (direction) async {
+                                  //   tabela.removeAt(pacient);
+                                  //   setState(() {
+                                  //     tabela.removeAt(pacient);
+                                  //   });
+                                  // },
+                                  child: ListCard(tabela: tabela, i: pacient));
                               },
                               padding: const EdgeInsets.all(16),
                               separatorBuilder: (_, __) {
