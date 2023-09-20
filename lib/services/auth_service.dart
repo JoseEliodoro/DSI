@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:heal_anality/crudillness/models/illness.dart';
 
 import '../crudpacient/models/pacient.dart';
 
@@ -12,6 +13,7 @@ class AuthService extends ChangeNotifier {
   FirebaseAuth _auth = FirebaseAuth.instance;
   User? usuario;
   Pacient? pacient;
+  Illness? illness;
   bool islogin = true;
   bool isLoading = true;
 

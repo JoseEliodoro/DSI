@@ -19,8 +19,12 @@ class CustomDrawer extends StatelessWidget {
         return 2;
       }else if (currentRouteName == './read_pacient') {
         return 3;
+      }else if (currentRouteName == './add_illness') {
+        return 4;
+      }else if (currentRouteName == './read_illness') {
+        return 5;
       }
-      return 4;
+      return 6;
     }
 
     return NavigationDrawer(
@@ -30,20 +34,28 @@ class CustomDrawer extends StatelessWidget {
           if (currentRouteName != './home' || currentRouteName == './auth') {
             Navigator.of(context).pushNamed('./home');
           }
-        } else if (index == 1) {
+        }else if (index == 1) {
           if (currentRouteName != './historic' ||
               currentRouteName == './auth') {
             Navigator.of(context).pushNamed('./historic');
           }
-        } else if (index == 2) {
+        }else if (index == 2) {
           if (currentRouteName != './add_pacient') {
             Navigator.of(context).pushNamed('./add_pacient');
           }
-        } else if (index == 3) {
+        }else if (index == 3) {
           if (currentRouteName != './read_pacient') {
             Navigator.of(context).pushNamed('./read_pacient');
           }
-        } else if (index == 4) {
+        }else if(index == 4) {
+          if (currentRouteName != './add_illness') {
+            Navigator.of(context).pushNamed('./add_illness');
+          }
+        }else if(index == 5) {
+          if (currentRouteName != './read_illness') {
+            Navigator.of(context).pushNamed('./read_illness');
+          }
+        }else if (index == 6) {
           context.read<AuthService>().logout();
           Navigator.of(context).pushNamed('./auth');
         }
@@ -82,6 +94,20 @@ class CustomDrawer extends StatelessWidget {
           label: SizedBox(
             width: 210,
             child: Text('Read Pacient'),
+          ),
+        ),
+        const NavigationDrawerDestination(
+          icon: Icon(Icons.person_search_sharp),
+          label: SizedBox(
+            width: 210,
+            child: Text('Add Illness'),
+          ),
+        ),
+        const NavigationDrawerDestination(
+          icon: Icon(Icons.person_search_sharp),
+          label: SizedBox(
+            width: 210,
+            child: Text('Read Illness'),
           ),
         ),
         const NavigationDrawerDestination(

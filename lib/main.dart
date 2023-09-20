@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:heal_anality/crudillness/add_illness_page.dart';
+import 'package:heal_anality/crudillness/read_illness_page.dart';
+import 'package:heal_anality/crudillness/updata_illness_page.dart';
 import 'package:heal_anality/crudpacient/read_pacient_page.dart';
 import 'package:heal_anality/crudpacient/updata_pacient_page.dart';
 import 'package:provider/provider.dart';
@@ -53,6 +56,9 @@ class _MyAppState extends State<MyApp> {
         './add_pacient': (context) => const AddPacientPage(),
         './read_pacient': (context) => const ReadPacientsPage(),
         './put_pacient': (context) => const UpdataPacientPage(),
+        './add_illness': (context) => const AddillnessPage(),
+        './read_illness': (context) => const ReadIllnessesPage(),
+        './put_illness': (context) => const UpdataIllnessPage(),
       },
     );
   }
